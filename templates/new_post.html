@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Create New Post</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <form method="POST">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" required><br><br>
+            
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content" rows="10" required></textarea><br><br>
+
+            <label for="user_id">Author:</label><br>
+            <select id="user_id" name="user_id" required>
+                {% for user in users %}
+                <option value="{{ user['user_id'] }}">{{ user['username'] }}</option>
+                {% endfor %}
+            </select><br><br>
+            
+            <button type="submit">Submit Post</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Blog</p>
+    </footer>
+</body>
+</html>

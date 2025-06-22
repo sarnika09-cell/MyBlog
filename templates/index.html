@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Forum</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Blog Forum!</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a> |
+            <a href="{{ url_for('new_post') }}">Create New Post</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Latest Posts</h2>
+        {% if posts %}
+            {% for post in posts %}
+            <div class="post-card">
+                <h3>{{ post['title'] }}</h3>
+                <p class="author">By: {{ post['author_username'] }}</p>
+                <p>{{ post['content'] }}</p>
+                <small>Posted on: {{ post['created_at'] }}</small>
+                <button class="like-button" data-post-id="{{ post['post_id'] }}">Like This Post</button>
+                
+                <!-- This is the line that was updated: 'edit-button' changed to 'delete-button' -->
+                <br> <!-- Optional: Adds a line break for visual separation -->
+                <a href="{{ url_for('edit_post', post_id=post['post_id']) }}" class="delete-button">Edit Post</a> 
+                <form action="{{ url_for('delete_post', post_id=post['post_id']) }}" method="POST" style="display:inline; margin-left: 10px;">
+                    <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this post? This action cannot be undone.');">Delete Post</button>
+                     <a href="{{ url_for('post_detail', post_id=post['post_id']) }}" class="view-post-link">View Post & Comments</a>
+                </form>
+                
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No posts found. Be the first to create one!</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Blog Forum</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

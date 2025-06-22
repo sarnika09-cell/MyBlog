@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Comment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Edit Comment</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <form method="POST" action="{{ url_for('edit_comment', comment_id=comment['comment_id']) }}">
+            <label for="content">Comment Content:</label><br>
+            <textarea id="content" name="content" rows="10" required>{{ comment['content'] }}</textarea><br><br>
+            
+            <button type="submit" class="action-button">Update Comment</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Blog Forum</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,228 @@
+/* MyBlog/static/style.css */
+
+/* Basic Reset & Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e4dcdc; /* Light reddish-brown background */
+    color: #d17979; /* A shade of red for general text */
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #e0d5d5; /* Lighter shade of the background color */
+    color: #4c0202; /* Darker red for header text */
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    padding-bottom: 0.5rem;
+}
+
+header nav a {
+    color: #924a8c; /* Purple-ish color for navigation links */
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Area */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* White background for main content */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(74, 68, 68, 0.1); /* Subtle shadow */
+}
+
+main h2 {
+    color: #53796c; /* Greenish-blue for main headings */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Post Card Styles */
+.post-card {
+    background-color: #f9f9f9; /* Off-white background for individual posts */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Soft shadow for cards */
+}
+
+.post-card h3 {
+    color: #333; /* Dark gray for post titles */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post-card .author {
+    font-style: italic;
+    color: #555; /* Medium gray for author name */
+    margin-bottom: 10px;
+}
+
+.post-card small {
+    color: #777; /* Lighter gray for timestamp */
+    display: block; /* Make it take its own line */
+    margin-top: 10px;
+}
+
+/* Like Button Styling */
+.like-button {
+    background-color: #8ea6bb; /* Blue-gray for like button */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.like-button:hover {
+    background-color: #8dacbd; /* Slightly darker blue-gray on hover */
+}
+
+/* General Button Styling (base for all buttons) */
+.action-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none; /* For links that act as buttons */
+    vertical-align: middle; /* Aligns buttons on the same line nicely */
+    line-height: normal;
+    margin-top: 10px; /* Consistent top margin for buttons within forms */
+}
+
+/* Styles for Delete and Edit buttons (using delete-button class) */
+.delete-button {
+    background-color: #f44336; /* Red for delete/edit action */
+    color: white;
+    /* Inherits padding, border-radius etc. from .action-button if applied to it */
+    padding: 8px 15px; /* Smaller padding for these specific buttons */
+    font-size: 0.9rem; /* Smaller font size for these specific buttons */
+    margin-left: 10px; /* Specific spacing */
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Styles for the "View Post & Comments" link */
+.view-post-link {
+    display: inline-block;
+    background-color: #6c757d; /* A neutral gray */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.view-post-link:hover {
+    background-color: #5a6268;
+}
+
+/* Styles for individual comments */
+.comment-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-left: 20px; /* Indent comments slightly */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.comment-card p {
+    margin-bottom: 5px;
+}
+
+.comment-card .comment-author {
+    font-size: 0.85em;
+    color: #666;
+    font-style: italic;
+    text-align: right;
+}
+
+
+/* Form Styles */
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input[type="text"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+form textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Styling for generic form submit buttons (e.g., "Submit Post", "Submit Comment") */
+form button[type="submit"] {
+    background-color: #edc446; /* Yellow for general submit buttons */
+    color: white;
+}
+
+form button[type="submit"]:hover {
+    background-color: #d8d070; /* Darker yellow on hover */
+}
+
+/* Secondary Button Style (for Back to Home) */
+.secondary-button {
+    background-color: #6c757d; /* A neutral gray */
+    color: white;
+}
+
+.secondary-button:hover {
+    background-color: #5a6268;
+}
+
+/* Ensure spacing between form buttons and links with .action-button class */
+form button[type="submit"] + .action-button,
+form .action-button + .action-button {
+    margin-left: 10px; /* Space between sibling buttons/links */
+}
+
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #777; /* Gray for footer text */
+    font-size: 0.9rem;
+}

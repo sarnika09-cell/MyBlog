@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Blog Post</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a> |
+            <a href="{{ url_for('new_post') }}">Create New Post</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="post-card">
+            <h3>{{ post['title'] }}</h3>
+            <p class="author">By: {{ post['author_username'] }}</p>
+            <p>{{ post['content'] }}</p>
+            <small>Posted on: {{ post['created_at'] }}</small>
+            <button class="like-button" data-post-id="{{ post['post_id'] }}">Like This Post</button>
+            <br>
+            <a href="{{ url_for('edit_post', post_id=post['post_id']) }}" class="delete-button">Edit Post</a>
+            <form action="{{ url_for('delete_post', post_id=post['post_id']) }}" method="POST" style="display:inline; margin-left: 10px;">
+                <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this post? This action cannot be undone.');">Delete Post</button>
+            </form>
+        </div>
+
+        <h3>Comments</h3>
+        {% if comments %}
+            {% for comment in comments %}
+            <div class="comment-card">
+                <p>{{ comment['content'] }}</p>
+                <p class="comment-author">By: {{ comment['commenter_username'] }} on {{ comment['created_at'] }}</p>
+                <a href="{{ url_for('edit_comment', comment_id=comment['comment_id']) }}" class="delete-button">Edit Comment</a>
+                <form action="{{ url_for('delete_comment', comment_id=comment['comment_id']) }}" method="POST" style="display:inline; margin-left: 10px;">
+                    <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this comment? This cannot be undone.');">Delete Comment</button>
+                </form>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No comments yet. Be the first to add one!</p>
+        {% endif %}
+
+        <h4>Add a New Comment</h4>
+        <form method="POST" action="{{ url_for('add_comment', post_id=post['post_id']) }}">
+            <label for="content">Your Comment:</label><br>
+            <textarea id="content" name="content" rows="4" required></textarea><br><br>
+
+            <label for="user_id">Author:</label><br>
+            <select id="user_id" name="user_id" required>
+                {% for user in users %}
+                <option value="{{ user['user_id'] }}">{{ user['username'] }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <button type="submit" class="action-button">Submit Comment</button>
+            <a href="{{ url_for('index') }}" class="action-button secondary-button" style="margin-left: 10px;">Back to Home</a>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Blog Forum</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
