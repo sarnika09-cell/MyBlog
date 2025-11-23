@@ -23,7 +23,7 @@ Follow these steps to get the project up and running on your local machine.
 
  1. Clone the repository
 
-git clone [https://github.com/](https://github.com/)[YOUR_GITHUB_USERNAME]/MyBlog.git cd MyBlog
+git clone [https://github.com/](https://github.com/)
 
 2. Create and activate a virtual environment
 It's highly recommended to use a virtual environment to manage dependencies.
