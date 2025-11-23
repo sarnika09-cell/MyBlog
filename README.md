@@ -11,7 +11,9 @@ This is a basic blogging platform built using the Flask web framework in Python 
 
 ## Technologies Used
 Flask: Python web framework.
+
 SQLite: Database.
+
 HTML/CSS: Frontend structure and styling.
 **Python 3.x**
 
